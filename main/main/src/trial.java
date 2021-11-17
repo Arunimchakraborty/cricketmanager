@@ -7,16 +7,22 @@ public class trial {
     }
     Scanner sc = new Scanner(System.in);
     int runs;
+    int game_runs;
     int balls;
+    int game_balls;
     int bat_skill = 85;
     int bowl_skill = 82;
     int bat_agg = 3;
     int field_agg = 3;
+    int wickets = 0;
+    int overs = 0;
     boolean out(boolean b){
         if(b == true){
         System.out.println("OUT!!");
-        System.out.println("Total Runs Scored : " + runs);
-        System.out.println("Total balls faced : " + balls);
+        wickets++;
+        System.out.println("Runs Scored : " + runs);
+        System.out.println("balls faced : " + balls);
+        System.out.println("Score - " + game_runs + "/" + wickets);
         runs = 0;
         balls = 0;
         return true;
@@ -29,36 +35,47 @@ public class trial {
     void run0(){
         System.out.println("0 Runs");
         balls++;
+        game_balls++;
     }
 
     void run1(){
         System.out.println("1 Run");
         runs++;
+        game_runs++;
         balls++;
+        game_balls++;
     }
 
     void run2(){
         System.out.println("2 Run");
         runs+=2;
+        game_runs+=2;
         balls++;
+        game_balls++;
     }
 
     void run3() {
         System.out.println("3 Run");
         runs += 3;
+        game_runs+=3;
         balls++;
+        game_balls++;
     }
 
     void run4() {
         System.out.println("4 Run");
         runs += 4;
+        game_runs+=4;
         balls++;
+        game_balls++;
     }
 
     void run6() {
         System.out.println("6 Run");
         runs += 6;
+        game_runs+=6;
         balls++;
+        game_balls++;
     }
 
     int lout = -137;
@@ -74,15 +91,33 @@ public class trial {
     int h4 = 185;
     int l6 = 186;
     int h6 = 200;
-
+    int h = 200;
+    int l = -143;
 
     void outcomeDetermine(){     
         while (sc.nextLine() != "n"){
-            int luck = rand(200, -145);
+            if (bat_agg == 1 || field_agg == 1){
+                h-=40;
+                l+=20;
+            }
+            if (bat_agg == 2 || field_agg == 2){
+                h-=20;
+                l+=10;
+            }
+            if (bat_agg == 3 || field_agg == 3){
+                h+=0;
+                l+=0;
+            }
+            if (bat_agg == 4 || field_agg == 4){
+                h+=20;
+                l-=12;
+            }
+            if (bat_agg == 5 || field_agg == 5){
+                h+=40;
+                l-=24;
+            }
+            int luck = rand(h, l);
             int dice = 2*bat_skill - 2*bowl_skill + luck;
-        if (bat_agg == 1 || field_agg == 1){
-            luck = rand(280, -10);
-        }
         if(random.nextInt(200) == 100){
             out(true);
             break;
@@ -109,8 +144,44 @@ public class trial {
         if (dice >= l6) {
             run6();
         }
+
+        if (game_balls == 6){
+            over();
+        }
+
+        if (overs == 20 || wickets == 10){
+            innings();
+            break;
+        }
+        h = 200;
+        l = -143;
         
     }
+    }
+
+    void over(){
+        System.out.println("End of over");
+        System.out.println("Runs - " + game_runs);
+        overs++;
+        System.out.println("Overs " + overs);
+        game_balls = 0;
+    }
+
+    void innings(){
+        if(overs == 20){
+            System.out.println("End of innings");
+            System.out.println("Total runs - " + game_runs);
+            System.out.println("Total Wickets - " + wickets);
+            if(overs != 10){
+                System.out.println("Overs - " + overs + "." + game_balls);
+                return;
+            }
+            else{
+                System.out.println("Overs - 10.0");
+                return;
+            }
+            
+        }
     }
 
 }
