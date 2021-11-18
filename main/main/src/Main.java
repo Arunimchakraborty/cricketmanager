@@ -1,7 +1,16 @@
 import java.util.Scanner;
 import java.util.Random;
-public class backend {
-    Random random = new Random();
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+public class Main extends Applet implements ItemListener, ActionListener{
+/*
+ <applet code="Main" width=300 height=250>
+ </applet>
+*/
+
+Random random = new Random();
+    GUI gui = new GUI();
     int rand(int h, int l){
         return random.nextInt(h - l) + l;
     }
@@ -12,11 +21,11 @@ public class backend {
     int game_balls;
     int bat_skill = 85;
     int bowl_skill = 82;
-    int bat_agg;
-    int field_agg;
+    int bat_agg = 3;
+    int field_agg = 3;
     int wickets = 0;
     int overs = 0;
-    String imdt_outcome = "";
+    String imdt_outcome;
     boolean out(boolean b){
         if(b == true){
         System.out.println("OUT!!");
@@ -35,7 +44,7 @@ public class backend {
     }
 
     int run0(){
-        System.out.println("0 Runs");
+        //System.out.println("0 Runs");
         balls++;
         game_balls++;
         imdt_outcome = "0";
@@ -43,7 +52,7 @@ public class backend {
     }
 
     int run1(){
-        System.out.println("1 Run");
+        // System.out.println("1 Run");
         runs++;
         game_runs++;
         balls++;
@@ -53,7 +62,7 @@ public class backend {
     }
 
     int run2(){
-        System.out.println("2 Run");
+        // System.out.println("2 Run");
         runs+=2;
         game_runs+=2;
         balls++;
@@ -63,7 +72,7 @@ public class backend {
     }
 
     int run3() {
-        System.out.println("3 Run");
+        // System.out.println("3 Run");
         runs += 3;
         game_runs+=3;
         balls++;
@@ -73,7 +82,7 @@ public class backend {
     }
 
     int run4() {
-        System.out.println("4 Run");
+        // System.out.println("4 Run");
         runs += 4;
         game_runs+=4;
         balls++;
@@ -83,7 +92,7 @@ public class backend {
     }
 
     int run6() {
-        System.out.println("6 Run");
+        // System.out.println("6 Run");
         runs += 6;
         game_runs+=6;
         balls++;
@@ -108,7 +117,7 @@ public class backend {
     int h = 200;
     int l = -143;
 
-    void outcomeDetermine(){     
+    int outcomeDetermine(){     
         h = 200;
         l = -143;
         if (bat_agg == 1 || field_agg == 1){
@@ -166,7 +175,7 @@ public class backend {
         if (overs == 20 || wickets == 10){
             innings();
         }
-        return;
+        return -10;
         
     
     }
@@ -180,21 +189,97 @@ public class backend {
     }
 
     void innings(){
+        if(overs == 20){
             System.out.println("End of innings");
             System.out.println("Total runs - " + game_runs);
             System.out.println("Total Wickets - " + wickets);
-            if(overs != 20){
+            if(overs != 10){
                 System.out.println("Overs - " + overs + "." + game_balls);
-                System.exit(1);
+                return;
             }
             else{
-                System.out.println("Overs - 20.0");
-                System.exit(1);
+                System.out.println("Overs - 10.0");
+                return;
             }
             
-        
+        }
     }
 
+
+
+
+
+    Choice field, aggression;
+    Button ball, changefield, changeaggressio;
+    backend obj = new backend();
+    public void init(){
+        // setLayout(new GridLayout(2,3));
+        field = new Choice();
+        field.addItem("Very Aggressive");
+        field.addItem("Aggressive");
+        field.addItem("Moderate");
+        field.addItem("Defensive");
+        field.addItem("Very Defensive");
+        aggression = new Choice();
+        aggression.addItem("Very Aggressive");
+        aggression.addItem("Aggressive");
+        aggression.addItem("Moderate");
+        aggression.addItem("Defensive");
+        aggression.addItem("Very Defensive");
+        Label agglb = new Label("Batsman Aggression");
+        Label fieldlb = new Label("Field Aggression");
+        ball.addActionListener(new Main());
+        add(fieldlb);
+        add(field);
+        add(agglb);
+        add(aggression);
+        Label score = new Label(game_runs + "." + wickets + "\n" + "Overs - " + overs);
+        add(score);
+        Label outcomes = new Label("Outcomes \n\n" + imdt_outcome + "\n");
+        add(outcomes);
+    }
+
+    public void itemStateChanged(ItemEvent ie) {
+        if(field.getSelectedItem().equals("Very Aggressive"))
+        {obj.field_agg = 5;}
+        else if(field.getSelectedItem().equals("Aggressive"))
+        {obj.field_agg = 4;}
+        else if(field.getSelectedItem().equals("Moderate"))
+        {obj.field_agg = 3;}
+        else if(field.getSelectedItem().equals("Defensive"))
+        {obj.field_agg = 2;}
+        else if(field.getSelectedItem().equals("Very Defensive"))
+        {obj.field_agg = 1;}
+
+        if(aggression.getSelectedItem().equals("Very Aggressive"))
+        {obj.bat_agg = 5;}
+        else if(aggression.getSelectedItem().equals("Aggressive"))
+        {obj.bat_agg = 4;}
+        else if(aggression.getSelectedItem().equals("Moderate"))
+        {obj.bat_agg = 3;}
+        else if(aggression.getSelectedItem().equals("Defensive"))
+        {obj.bat_agg = 2;}
+        else if(aggression.getSelectedItem().equals("Very Defensive"))
+        {obj.bat_agg = 1;}
+
+        
+
+        repaint();
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+            obj.outcomeDetermine();
+    }
+
+    public void paint(Graphics g){
+            g.drawString("Cricket Game", 100, 100);
+    }
+
+    
+
+    
 }
+
+    
 
 
