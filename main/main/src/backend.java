@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-public class trial {
+public class backend {
     Random random = new Random();
     int rand(int h, int l){
         return random.nextInt(h - l) + l;
@@ -161,7 +161,7 @@ public class trial {
 
     void over(){
         System.out.println("End of over");
-        System.out.println("Runs - " + game_runs);
+        System.out.println("Score - " + game_runs + "/" + wickets);
         overs++;
         System.out.println("Overs " + overs);
         game_balls = 0;

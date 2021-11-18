@@ -1,6 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        trial obj = new trial();
+        backend obj = new backend();
         int i = 10;
         while(i>5){
             obj.outcomeDetermine();
