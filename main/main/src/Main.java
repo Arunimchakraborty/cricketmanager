@@ -1,3 +1,4 @@
+//This is not the correct code, refer to GUI.java, backend.java and App.java
 import java.util.Scanner;
 import java.util.Random;
 import java.awt.*;
