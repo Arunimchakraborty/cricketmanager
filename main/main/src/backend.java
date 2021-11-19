@@ -12,11 +12,14 @@ public class backend {
     int game_balls;
     int bat_skill = 85;
     int bowl_skill = 82;
-    int bat_agg;
-    int field_agg;
+    int bat_agg=1;
+    int field_agg=1;
     int wickets = 0;
     int overs = 0;
-    String imdt_outcome = "";
+    int toss;
+    int toss_called;
+
+    String imdt_outcome[] = new String[7];
     boolean out(boolean b){
         if(b == true){
         System.out.println("OUT!!");
@@ -28,7 +31,7 @@ public class backend {
         System.out.println("Score - " + game_runs + "/" + wickets);
         runs = 0;
         balls = 0;
-        imdt_outcome = "OUT!";
+        imdt_outcome[game_balls] = "OUT!";
         return true;
         }
         else {
@@ -40,7 +43,7 @@ public class backend {
         System.out.println("0 Runs");
         balls++;
         game_balls++;
-        imdt_outcome = "0";
+        imdt_outcome[game_balls] = "0";
         return(0);
     }
 
@@ -50,7 +53,7 @@ public class backend {
         game_runs++;
         balls++;
         game_balls++;
-        imdt_outcome = "1";
+        imdt_outcome[game_balls] = "1";
         return(1);
     }
 
@@ -60,7 +63,7 @@ public class backend {
         game_runs+=2;
         balls++;
         game_balls++;
-        imdt_outcome = "2";
+        imdt_outcome[game_balls] = "2";
         return(2);
     }
 
@@ -70,7 +73,7 @@ public class backend {
         game_runs+=3;
         balls++;
         game_balls++;
-        imdt_outcome = "3";
+        imdt_outcome[game_balls] = "3";
         return(3);
     }
 
@@ -80,7 +83,7 @@ public class backend {
         game_runs+=4;
         balls++;
         game_balls++;
-        imdt_outcome = "4";
+        imdt_outcome[game_balls] = "4";
         return(4);
     }
 
@@ -90,7 +93,7 @@ public class backend {
         game_runs+=6;
         balls++;
         game_balls++;
-        imdt_outcome = "6";
+        imdt_outcome[game_balls] = "6";
         return(6);
     }
 
@@ -168,6 +171,9 @@ public class backend {
         if (overs == 20 || wickets == 10){
             innings();
         }
+        if(game_balls==1){
+            imdt_outcome[2] = imdt_outcome[3] = imdt_outcome[4] = imdt_outcome[5] = imdt_outcome[6] = null;
+        }
         return;
         
     
@@ -195,6 +201,11 @@ public class backend {
             }
             
         
+    }
+
+    int Toss(){
+        toss = random.nextInt(2);
+        return toss;
     }
 
 }

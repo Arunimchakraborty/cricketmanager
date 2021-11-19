@@ -77,7 +77,28 @@ public class GUI extends Applet implements ItemListener, ActionListener{
 
     public void paint(Graphics g){
         g.drawString("Score " + obj.game_runs + "/" + obj.wickets + " " + "Overs - " + obj.overs + "." + obj.game_balls, 50, 200);
-        g.drawString("Outcomes " + obj.imdt_outcome + " ", 50, 240);
+        // g.drawString("Outcomes " + obj.imdt_outcome[1] + " " + obj.imdt_outcome[2] + " " + obj.imdt_outcome[3] + " " + obj.imdt_outcome[4] + " " + obj.imdt_outcome[5] + " " + obj.imdt_outcome[6] + " ", 50, 240);
+        if(obj.imdt_outcome[1] != null){
+            g.drawString("Ball 1 - " + obj.imdt_outcome[1], 50, 220);
+        }
+        if(obj.imdt_outcome[2] != null){
+            g.drawString("Ball 2 - " + obj.imdt_outcome[2], 50, 240);
+        }
+        if(obj.imdt_outcome[3] != null){
+            g.drawString("Ball 3 - " + obj.imdt_outcome[3], 50, 260);
+        }
+        if(obj.imdt_outcome[4] != null){
+            g.drawString("Ball 4 - " + obj.imdt_outcome[4], 50, 280);
+        }
+        if(obj.imdt_outcome[5] != null){
+            g.drawString("Ball 5 - " + obj.imdt_outcome[5], 50, 300);
+        }
+        if(obj.imdt_outcome[6] != null){
+            g.drawString("Ball 6 - " + obj.imdt_outcome[6], 50, 320);
+        }
+        if(obj.overs == 20 || obj.wickets == 10){
+            g.drawString("End of Innings", 150, 250);
+        }
     }
 
 
