@@ -21,6 +21,8 @@ public class backend {
         if(b == true){
         System.out.println("OUT!!");
         wickets++;
+        balls++;
+        game_balls++;
         System.out.println("Runs Scored : " + runs);
         System.out.println("balls faced : " + balls);
         System.out.println("Score - " + game_runs + "/" + wickets);
@@ -185,11 +187,11 @@ public class backend {
             System.out.println("Total Wickets - " + wickets);
             if(overs != 20){
                 System.out.println("Overs - " + overs + "." + game_balls);
-                System.exit(1);
+                return;
             }
             else{
                 System.out.println("Overs - 20.0");
-                System.exit(1);
+                return;
             }
             
         

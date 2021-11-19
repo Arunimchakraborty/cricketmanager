@@ -18,12 +18,14 @@ public class GUI extends Applet implements ItemListener, ActionListener{
         field.addItem("Moderate");
         field.addItem("Defensive");
         field.addItem("Very Defensive");
+        field.addItemListener(this);
         aggression = new Choice();
         aggression.addItem("Very Aggressive");
         aggression.addItem("Aggressive");
         aggression.addItem("Moderate");
         aggression.addItem("Defensive");
         aggression.addItem("Very Defensive");
+        aggression.addItemListener(this);
         Label agglb = new Label("Batsman Aggression");
         Label fieldlb = new Label("Field Aggression");
         ball = new Button("Bowl");
@@ -32,10 +34,10 @@ public class GUI extends Applet implements ItemListener, ActionListener{
         add(field);
         add(agglb);
         add(aggression);
-        Label score = new Label(obj.game_runs + "." + obj.wickets + " " + "Overs - " + obj.overs);
-        add(score);
-        Label outcomes = new Label("Outcomes " + obj.imdt_outcome + " ");
-        add(outcomes);
+        // Label score = new Label("Score " + obj.game_runs + "." + obj.wickets + " " + "Overs - " + obj.overs);
+        // add(score);
+        // Label outcomes = new Label("Outcomes " + obj.imdt_outcome + " ");
+        // add(outcomes);
         add(ball);
     }
 
@@ -69,7 +71,13 @@ public class GUI extends Applet implements ItemListener, ActionListener{
 
     public void actionPerformed(ActionEvent ae) {
             this.obj.outcomeDetermine();
+
             repaint();
+    }
+
+    public void paint(Graphics g){
+        g.drawString("Score " + obj.game_runs + "/" + obj.wickets + " " + "Overs - " + obj.overs + "." + obj.game_balls, 50, 200);
+        g.drawString("Outcomes " + obj.imdt_outcome + " ", 50, 240);
     }
 
 
