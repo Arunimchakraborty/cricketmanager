@@ -12,8 +12,8 @@ public class backend {
     int game_balls;
     int bat_skill = 85;
     int bowl_skill = 82;
-    int bat_agg=1;
-    int field_agg=1;
+    int bat_agg=3;
+    int field_agg=3;
     int wickets = 0;
     int overs = 0;
     int toss;
