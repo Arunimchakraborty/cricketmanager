@@ -201,79 +201,79 @@ public class editedUI_5 extends backend2 {
 
     void choiceIfElse() {
         // Batsman Aggression
-        if (batsmanAggresionChoice.getSelectedItem() == "Very Defensive") {
+        if (batsmanAggresionChoice.getSelectedIndex() == 1) {
             battingAggression = 1;
-        } else if (batsmanAggresionChoice.getSelectedItem() == "Defensive") {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 2) {
             battingAggression = 2;
-        } else if (batsmanAggresionChoice.getSelectedItem() == "Normal") {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 3) {
             battingAggression = 3;
-        } else if (batsmanAggresionChoice.getSelectedItem() == "Aggressive") {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 4) {
             battingAggression = 4;
-        } else if (batsmanAggresionChoice.getSelectedItem() == "Very Aggressive") {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 5) {
             battingAggression = 5;
         }
 
         // Field Aggression
-        if (fieldAggressionChoice.getSelectedItem() == "Very Defensive") {
+        if (fieldAggressionChoice.getSelectedIndex() == 1) {
             fieldAggression = 1;
-        } else if (fieldAggressionChoice.getSelectedItem() == "Defensive") {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 2) {
             fieldAggression = 2;
-        } else if (fieldAggressionChoice.getSelectedItem() == "Normal") {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 3) {
             fieldAggression = 3;
-        } else if (fieldAggressionChoice.getSelectedItem() == "Aggressive") {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 4) {
             fieldAggression = 4;
-        } else if (fieldAggressionChoice.getSelectedItem() == "Very Aggressive") {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 5) {
             fieldAggression = 5;
         }
 
         // Selection of Bowler
-        if (chooseBowlerChoice.getSelectedItem() == "Bowler 1") {
+        if (chooseBowlerChoice.getSelectedIndex() == 1) {
             bowlerIndex = 1;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 2") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 2) {
             bowlerIndex = 2;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 3") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 3) {
             bowlerIndex = 3;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 4") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 4) {
             bowlerIndex = 4;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 5") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 5) {
             bowlerIndex = 5;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 6") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 6) {
             bowlerIndex = 6;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 7") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 7) {
             bowlerIndex = 7;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 8") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 8) {
             bowlerIndex = 8;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 9") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 9) {
             bowlerIndex = 9;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 10") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 10) {
             bowlerIndex = 10;
-        } else if (chooseBowlerChoice.getSelectedItem() == "Bowler 11") {
+        } else if (chooseBowlerChoice.getSelectedIndex() == 11) {
             bowlerIndex = 11;
         }
 
         // Line Choice
-        if (lineChoice.getSelectedItem() == "wide outside offstump") {
+        if (lineChoice.getSelectedIndex() == 1) {
             line = 1;
-        } else if (lineChoice.getSelectedItem() == "offstump channel") {
+        } else if (lineChoice.getSelectedIndex() == 2) {
             line = 2;
-        } else if (lineChoice.getSelectedItem() == "offstump") {
+        } else if (lineChoice.getSelectedIndex() == 3) {
             line = 3;
-        } else if (lineChoice.getSelectedItem() == "middle stump") {
+        } else if (lineChoice.getSelectedIndex() == 4) {
             line = 4;
-        } else if (lineChoice.getSelectedItem() == "leg stump") {
+        } else if (lineChoice.getSelectedIndex() == 5) {
             line = 5;
         }
 
         // Length Choice
-        if (lengthChoice.getSelectedItem() == "yorker") {
+        if (lengthChoice.getSelectedIndex() == 1) {
             length = 1;
-        } else if (lengthChoice.getSelectedItem() == "full length") {
+        } else if (lengthChoice.getSelectedIndex() == 2) {
             length = 2;
-        } else if (lengthChoice.getSelectedItem() == "good length") {
+        } else if (lengthChoice.getSelectedIndex() == 3) {
             length = 3;
-        } else if (lengthChoice.getSelectedItem() == "short of good length") {
+        } else if (lengthChoice.getSelectedIndex() == 4) {
             length = 4;
-        } else if (lengthChoice.getSelectedItem() == "bouncer") {
+        } else if (lengthChoice.getSelectedIndex() == 5) {
             length = 5;
         }
     }

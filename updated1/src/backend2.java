@@ -37,7 +37,7 @@ public class backend2 extends JFrame {
     private int[] wickets_in_over = new int[20];
     public int batsmanIndexOnStrike = 0;
     public int batsmanIndexOffStrike = 1;
-    public int bowlerIndex;
+    public int bowlerIndex = 10;
     public int fieldAggression;
     public int battingAggression;
     public int outcomeForDB;
@@ -70,14 +70,6 @@ public class backend2 extends JFrame {
     public int batsmanindex;
 
     /** Basically */
-
-    // public void batsmanIndexSetterAtDefault() {
-    // batsmanIndexOnStrike = 1;
-    // }
-
-    public void bowlerIndexSetterAtDefault() {
-        bowlerIndex = 10;
-    }
 
     void setSkills() {
         // For bowlers
@@ -336,6 +328,9 @@ public class backend2 extends JFrame {
         bowler_overs[bowlerIndex]++;
         System.out.println("batsman" + batsmanIndexOnStrike + ":" + batsman_runs[batsmanIndexOnStrike]);
         System.out.println("batsman" + batsmanIndexOffStrike + ":" + batsman_runs[batsmanIndexOffStrike]);
+        System.out.println("bowlerIndex:" + bowlerIndex);
+        System.out.println("bat agg:" + battingAggression + " field:" + fieldAggression);
+        System.out.println("line" + line + " length:" + length);
         changeStrike();
     }
 
@@ -400,7 +395,6 @@ public class backend2 extends JFrame {
         // this is for setting order of events
         // whenever the bowl button will be pressed this method will get called
         settingAttributesRandomly();
-        bowlerIndexSetterAtDefault();
         setSkills();
         // set line
         // set length
