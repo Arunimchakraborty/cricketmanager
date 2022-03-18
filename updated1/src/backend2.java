@@ -38,8 +38,8 @@ public class backend2 extends JFrame {
     public int batsmanIndexOnStrike = 0;
     public int batsmanIndexOffStrike = 1;
     public int bowlerIndex;
-    public int fieldAggression;
-    public int battingAggression;
+    public int fieldAggression = 3;
+    public int battingAggression = 3;
     public int outcomeForDB;
 
     // Bowling related Attributes
@@ -343,11 +343,11 @@ public class backend2 extends JFrame {
         System.out.println("Total Wickets - " + wickets);
         if (overs != 20) {
             System.out.println("Overs - " + overs + "." + over_balls);
-            return;
         } else {
             System.out.println("Overs - 20.0");
-            return;
         }
+        System.out.println("\n\n---------------------\n\n");
+        inningsSummary();
 
     }
 
@@ -406,6 +406,17 @@ public class backend2 extends JFrame {
 
     public backend2() {
         // an empty constructor
+    }
+
+    void inningsSummary() {
+        for (int i = 0; i < 11; i++) {
+            System.out.println("Batsman " + (i + 1) + " :" + batsman_runs[i] + "(" + batsman_balls_played[i] + ")");
+        }
+        System.out.println("\n------------------------------------\n");
+        for (int i = 0; i < 11; i++) {
+            System.out.println("Bowler " + (i + 1) + " :" + bowler_wickets[i] + "/" + bowler_runs[i] + "("
+                    + bowler_overs[i] + "." + (bowler_balls[i] % 6) + ")");
+        }
     }
 
     public boolean inningEndorNot() {

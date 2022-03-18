@@ -123,6 +123,30 @@ public class editedUI_5 extends backend2 {
         }
     }
 
+    boolean powerplay() {
+        if (overs != 0) {
+            if (overs < 6 & (fieldAggression == 2 || fieldAggression == 1)) {
+                JOptionPane.showMessageDialog(null,
+                        "Powerplay is in effect\nPlease select some other field",
+                        "Inane error", JOptionPane.ERROR_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } else if (overs == 0 & over_balls != 0) {
+            if (overs < 6 & (fieldAggression == 2 || fieldAggression == 1)) {
+                JOptionPane.showMessageDialog(null,
+                        "Powerplay is in effect\nPlease select some other field",
+                        "Inane error", JOptionPane.ERROR_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     void removeVisibilityOfChoosingBowlers() {
         if (over_balls != 5) {
             chooseBowlerChoice.setVisible(false);
@@ -150,12 +174,14 @@ public class editedUI_5 extends backend2 {
         addChoiceItems(batsmanAggresionChoice, "Normal");
         addChoiceItems(batsmanAggresionChoice, "Aggressive");
         addChoiceItems(batsmanAggresionChoice, "Very Aggressive");
+        batsmanAggresionChoice.select(2);
 
         addChoiceItems(fieldAggressionChoice, "Very Defensive");
         addChoiceItems(fieldAggressionChoice, "Defensive");
         addChoiceItems(fieldAggressionChoice, "Normal");
         addChoiceItems(fieldAggressionChoice, "Aggressive");
         addChoiceItems(fieldAggressionChoice, "Very Aggressive");
+        fieldAggressionChoice.select(2);
 
         addChoiceItems(chooseBowlerChoice, "Bowler1");
         addChoiceItems(chooseBowlerChoice, "Bowler2");
@@ -168,18 +194,21 @@ public class editedUI_5 extends backend2 {
         addChoiceItems(chooseBowlerChoice, "Bowler9");
         addChoiceItems(chooseBowlerChoice, "Bowler10");
         addChoiceItems(chooseBowlerChoice, "Bowler11");
+        chooseBowlerChoice.select(10);
 
         addChoiceItems(lineChoice, "wide outside offstump");
         addChoiceItems(lineChoice, "offstump channel");
         addChoiceItems(lineChoice, "offstump");
         addChoiceItems(lineChoice, "middle stump");
         addChoiceItems(lineChoice, "leg stump");
+        lineChoice.select(2);
 
         addChoiceItems(lengthChoice, "yorker");
         addChoiceItems(lengthChoice, "full length");
         addChoiceItems(lengthChoice, "good length");
         addChoiceItems(lengthChoice, "short of good length");
         addChoiceItems(lengthChoice, "bouncer");
+        lengthChoice.select(2);
     }
 
     void scorePartOfUI() {
@@ -230,9 +259,9 @@ public class editedUI_5 extends backend2 {
         scoreLabel.setText("<html>" + team_runs + "/" + wickets +
                 "<br/>" + "Overs - " + overs + "." + over_balls + "</html>");
         batsmanStatsLabel.setText(
-                "<html>" + "Batsman " + batsmanIndexOnStrike + " - " + batsman_runs[batsmanIndexOnStrike] +
+                "<html>" + "Batsman " + (batsmanIndexOnStrike + 1) + " - " + batsman_runs[batsmanIndexOnStrike] +
                         "(" + batsman_balls_played[batsmanIndexOnStrike] + ")" + "<br/>" +
-                        "Batsman " + batsmanIndexOffStrike + " - " + batsman_runs[batsmanIndexOffStrike] +
+                        "Batsman " + (batsmanIndexOffStrike + 1) + " - " + batsman_runs[batsmanIndexOffStrike] +
                         "(" + batsman_balls_played[batsmanIndexOffStrike] + ")" + "</html>");
         bowlerStatsLabel.setText("Bowler " + (bowlerIndex + 1) + " - " + bowler_wickets[bowlerIndex] + "/" +
                 bowler_runs[bowlerIndex] + " (" + bowler_overs[bowlerIndex] + "." + over_balls + ")");
@@ -331,8 +360,11 @@ public class editedUI_5 extends backend2 {
                 removeBowlersWhoseOversAreComplete();
                 if (bowler_overs[bowlerIndex] == 4 || alternateBowling() & overs != 0) {
                     return;
+                } else if (powerplay() & (overs == 0 || over_balls != 0)) {
+                    return;
+                } else if (powerplay() & overs != 0) {
+                    return;
                 }
-                removeVisibilityOfChoosingBowlers();
                 setOrderOfEvents();
                 settingStats();
             }
