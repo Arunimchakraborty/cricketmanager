@@ -100,6 +100,39 @@ public class editedUI_5 extends backend2 {
         addPanel(chooseBowlerLeftSidePanel, 30, 150 + 120, 650 / 2, 80 * 2);
     }
 
+    void removeBowlersWhoseOversAreComplete() {
+        if (bowler_overs[bowlerIndex] == 4) {
+            JOptionPane.showMessageDialog(null,
+                    "Bowler " + (bowlerIndex + 1) + " has completed all 4 over\nPlease select some other bowler",
+                    "Inane error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    boolean alternateBowling() {
+        if (overs != 0) {
+            if (bowlerIndex == whichBowlerBowledWhichOver[overs - 1]) {
+                JOptionPane.showMessageDialog(null,
+                        "Bowler " + (bowlerIndex + 1) + " bowled the last over\nPlease select some other bowler",
+                        "Inane error", JOptionPane.ERROR_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    void removeVisibilityOfChoosingBowlers() {
+        if (over_balls != 5) {
+            chooseBowlerChoice.setVisible(false);
+            ChooseBowlerLabel.setVisible(false);
+        } else if (over_balls == 5) {
+            chooseBowlerChoice.setVisible(true);
+            ChooseBowlerLabel.setVisible(false);
+        }
+    }
+
     void settingPanelLayoutTogether() {
         setPanelLayout(mainPanel, null);
         setPanelLayout(panelForScore, new GridLayout(1, 1, 650 / 8, 7 * 2));
@@ -129,6 +162,12 @@ public class editedUI_5 extends backend2 {
         addChoiceItems(chooseBowlerChoice, "Bowler3");
         addChoiceItems(chooseBowlerChoice, "Bowler4");
         addChoiceItems(chooseBowlerChoice, "Bowler5");
+        addChoiceItems(chooseBowlerChoice, "Bowler6");
+        addChoiceItems(chooseBowlerChoice, "Bowler7");
+        addChoiceItems(chooseBowlerChoice, "Bowler8");
+        addChoiceItems(chooseBowlerChoice, "Bowler9");
+        addChoiceItems(chooseBowlerChoice, "Bowler10");
+        addChoiceItems(chooseBowlerChoice, "Bowler11");
 
         addChoiceItems(lineChoice, "wide outside offstump");
         addChoiceItems(lineChoice, "offstump channel");
@@ -195,39 +234,42 @@ public class editedUI_5 extends backend2 {
                         "(" + batsman_balls_played[batsmanIndexOnStrike] + ")" + "<br/>" +
                         "Batsman " + batsmanIndexOffStrike + " - " + batsman_runs[batsmanIndexOffStrike] +
                         "(" + batsman_balls_played[batsmanIndexOffStrike] + ")" + "</html>");
-        bowlerStatsLabel.setText("Bowler " + (11 - bowlerIndex) + " - " + bowler_wickets[bowlerIndex] + "/" +
+        bowlerStatsLabel.setText("Bowler " + (bowlerIndex + 1) + " - " + bowler_wickets[bowlerIndex] + "/" +
                 bowler_runs[bowlerIndex] + " (" + bowler_overs[bowlerIndex] + "." + over_balls + ")");
     }
 
     void choiceIfElse() {
+
         // Batsman Aggression
-        if (batsmanAggresionChoice.getSelectedIndex() == 1) {
+        if (batsmanAggresionChoice.getSelectedIndex() == 0) {
             battingAggression = 1;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 2) {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 1) {
             battingAggression = 2;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 3) {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 2) {
             battingAggression = 3;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 4) {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 3) {
             battingAggression = 4;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 5) {
+        } else if (batsmanAggresionChoice.getSelectedIndex() == 4) {
             battingAggression = 5;
         }
 
         // Field Aggression
-        if (fieldAggressionChoice.getSelectedIndex() == 1) {
+        if (fieldAggressionChoice.getSelectedIndex() == 0) {
             fieldAggression = 1;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 2) {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 1) {
             fieldAggression = 2;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 3) {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 2) {
             fieldAggression = 3;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 4) {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 3) {
             fieldAggression = 4;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 5) {
+        } else if (fieldAggressionChoice.getSelectedIndex() == 4) {
             fieldAggression = 5;
         }
 
         // Selection of Bowler
-        if (chooseBowlerChoice.getSelectedIndex() == 1) {
+        if (chooseBowlerChoice.getSelectedIndex() == 0) {
+            bowlerIndex = 0;
+        } else if (chooseBowlerChoice.getSelectedIndex() == 1) {
             bowlerIndex = 1;
         } else if (chooseBowlerChoice.getSelectedIndex() == 2) {
             bowlerIndex = 2;
@@ -247,43 +289,50 @@ public class editedUI_5 extends backend2 {
             bowlerIndex = 9;
         } else if (chooseBowlerChoice.getSelectedIndex() == 10) {
             bowlerIndex = 10;
-        } else if (chooseBowlerChoice.getSelectedIndex() == 11) {
-            bowlerIndex = 11;
         }
 
         // Line Choice
-        if (lineChoice.getSelectedIndex() == 1) {
+        if (lineChoice.getSelectedIndex() == 0) {
             line = 1;
-        } else if (lineChoice.getSelectedIndex() == 2) {
+        } else if (lineChoice.getSelectedIndex() == 1) {
             line = 2;
-        } else if (lineChoice.getSelectedIndex() == 3) {
+        } else if (lineChoice.getSelectedIndex() == 2) {
             line = 3;
-        } else if (lineChoice.getSelectedIndex() == 4) {
+        } else if (lineChoice.getSelectedIndex() == 3) {
             line = 4;
-        } else if (lineChoice.getSelectedIndex() == 5) {
+        } else if (lineChoice.getSelectedIndex() == 4) {
             line = 5;
         }
 
         // Length Choice
-        if (lengthChoice.getSelectedIndex() == 1) {
+        if (lengthChoice.getSelectedIndex() == 0) {
             length = 1;
-        } else if (lengthChoice.getSelectedIndex() == 2) {
+        } else if (lengthChoice.getSelectedIndex() == 1) {
             length = 2;
-        } else if (lengthChoice.getSelectedIndex() == 3) {
+        } else if (lengthChoice.getSelectedIndex() == 2) {
             length = 3;
-        } else if (lengthChoice.getSelectedIndex() == 4) {
+        } else if (lengthChoice.getSelectedIndex() == 3) {
             length = 4;
-        } else if (lengthChoice.getSelectedIndex() == 5) {
+        } else if (lengthChoice.getSelectedIndex() == 4) {
             length = 5;
         }
+
     }
 
     private void addingALtogether() {
         ALObject = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                if (overs == 20 || wickets == 10) {
+                    return;
+                }
                 choiceIfElse();
                 backend2setters(line, length, fieldAggression, battingAggression, bowlerIndex);
+                removeBowlersWhoseOversAreComplete();
+                if (bowler_overs[bowlerIndex] == 4 || alternateBowling() & overs != 0) {
+                    return;
+                }
+                removeVisibilityOfChoosingBowlers();
                 setOrderOfEvents();
                 settingStats();
             }

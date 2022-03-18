@@ -37,7 +37,7 @@ public class backend2 extends JFrame {
     private int[] wickets_in_over = new int[20];
     public int batsmanIndexOnStrike = 0;
     public int batsmanIndexOffStrike = 1;
-    public int bowlerIndex = 10;
+    public int bowlerIndex;
     public int fieldAggression;
     public int battingAggression;
     public int outcomeForDB;
@@ -68,6 +68,7 @@ public class backend2 extends JFrame {
     protected int line;
     protected int length;
     public int batsmanindex;
+    public int[] whichBowlerBowledWhichOver = new int[20];
 
     /** Basically */
 
@@ -326,9 +327,11 @@ public class backend2 extends JFrame {
         System.out.println("Overs " + overs);
         over_balls = 0;
         bowler_overs[bowlerIndex]++;
+        whichBowlerBowledWhichOver[overs - 1] = bowlerIndex;
         System.out.println("batsman" + batsmanIndexOnStrike + ":" + batsman_runs[batsmanIndexOnStrike]);
         System.out.println("batsman" + batsmanIndexOffStrike + ":" + batsman_runs[batsmanIndexOffStrike]);
         System.out.println("bowlerIndex:" + bowlerIndex);
+        System.out.println("Bowler who bowled the prev over: " + whichBowlerBowledWhichOver[overs - 1]);
         System.out.println("bat agg:" + battingAggression + " field:" + fieldAggression);
         System.out.println("line" + line + " length:" + length);
         changeStrike();
