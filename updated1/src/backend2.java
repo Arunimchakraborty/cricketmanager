@@ -2,7 +2,7 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
-public class backend2 extends JFrame {
+public class backend2 extends dbclass1 {
 
     // Creating objects for utility purpose
     private Random randobj = new Random();
@@ -16,18 +16,10 @@ public class backend2 extends JFrame {
 
     // Batting related Attributes
 
-    public int[] batsman_runs = new int[11];
-    public int[] batsman_balls_played = new int[11];
-    private int[] frontFootSkill = new int[11];
-    private int[] backFootSkill = new int[11];
-    private int[] offSideSkill = new int[11];
-    private int[] onSideSkill = new int[11];
-    private int[] strokePlay = new int[11];
-    private int[] AgainstPace = new int[11];
-    private int[] AgainstSpin = new int[11];
-    private int[] batsmanFinalSkill = new int[11];
-
     // Game mechanics related Attributes
+
+    public int[] batsmanFinalSkill = new int[22];
+    public int[] bowlerFinalSkill = new int[22];
     public int team_runs;
     public int wickets;
     public int overs;
@@ -42,20 +34,14 @@ public class backend2 extends JFrame {
     public int battingAggression = 3;
     public int outcomeForDB;
 
+    public int var1 = 0;
+
     // Bowling related Attributes
 
-    public int[] bowler_runs = new int[11];
-    public int[] bowler_wickets = new int[11];
-    public int[] bowler_overs = new int[11];
-    private int[] bowler_balls = new int[11];
-    private int[] spin = new int[11];
-    private int[] seam = new int[11];
-    private int[] drift = new int[11];
-    private int[] swing = new int[11];
-    private int[] accuracy = new int[11];
-    private int[] variations = new int[11];
-    private int[] bowlerFinalSkill = new int[11];
-    private int[] bowlerCategory = new int[11];
+    public int[] bowler_runs = new int[22];
+    public int[] bowler_wickets = new int[22];
+    public int[] bowler_overs = new int[22];
+    public int[] bowler_balls = new int[22];
 
     // Skill Assignment Variables
     private int movementOfPitch;
@@ -69,10 +55,30 @@ public class backend2 extends JFrame {
     protected int length;
     public int batsmanindex;
     public int[] whichBowlerBowledWhichOver = new int[20];
+    public int target;
+
+    boolean userBatting = true;
+
+    void reset() {
+        userBatting = false;
+        var1 = 1;
+        batsmanIndexOnStrike = 11;
+        batsmanIndexOffStrike = 12;
+        target = team_runs;
+        team_runs = 0;
+        wickets = 0;
+        overs = 0;
+        over_balls = 0;
+        for (int i = 0; i < 20; i++) {
+            runs_in_over[i] = 0;
+            wickets_in_over[i] = 0;
+        }
+    }
 
     /** Basically */
 
     void setSkills() {
+
         // For bowlers
         if (bowlerCategory[bowlerIndex] == 1) {// For Fast Bowlers
             this.movementInAir = swing[bowlerIndex];
@@ -334,6 +340,7 @@ public class backend2 extends JFrame {
         System.out.println("Bowler who bowled the prev over: " + whichBowlerBowledWhichOver[overs - 1]);
         System.out.println("bat agg:" + battingAggression + " field:" + fieldAggression);
         System.out.println("line" + line + " length:" + length);
+        System.out.println(playerName[batsmanIndexOnStrike]);
         changeStrike();
     }
 
@@ -347,57 +354,60 @@ public class backend2 extends JFrame {
             System.out.println("Overs - 20.0");
         }
         System.out.println("\n\n---------------------\n\n");
+        if (userBatting == true) {
+            reset();
+        }
         inningsSummary();
 
     }
 
     void settingAttributesRandomly() {
-        /**
-         * Because we dont have the db yet
-         * we have to set all attributes of all 11 players randomly
-         * when the db arrives we will have no use for this method
-         */
-        int it = 0;
-        for (int i = 0; i < 11; i++) {
-            frontFootSkill[i] = rand(90, 80) - it;
-            backFootSkill[i] = rand(90, 80) - it;
-            offSideSkill[i] = rand(90, 80) - it;
-            onSideSkill[i] = rand(90, 80) - it;
-            AgainstPace[i] = rand(90, 80) - it;
-            AgainstSpin[i] = rand(90, 80) - it;
-            strokePlay[i] = rand(90, 80) - it;
-            it += 3;
-        }
-        it = 0;
-        for (int i = 10; i > -1; i--) {
-            if (bowlerCategory[i] == 1) {
-                swing[i] = rand(90, 80) - it;
-                seam[i] = rand(90, 80) - it;
-                accuracy[i] = rand(90, 80) - it;
-                variations[i] = rand(90, 80) - it;
-                it += 3;
-            } else {
-                spin[i] = rand(90, 80) - it;
-                drift[i] = rand(90, 80) - it;
-                accuracy[i] = rand(90, 80) - it;
-                variations[i] = rand(90, 80) - it;
-                it += 3;
-            }
-        }
-        it = 0;
-        for (int i = 0; i < 11; i++) {
-            if (i > 6) {
-                bowlerCategory[i] = randobj.nextInt(1);
-            } else {
-                bowlerCategory[i] = randobj.nextInt(1);
-            }
-        }
+        // /**
+        // * Because we dont have the db yet
+        // * we have to set all attributes of all 11 players randomly
+        // * when the db arrives we will have no use for this method
+        // */
+        // int it = 0;
+        // for (int i = 0; i < 11; i++) {
+        // frontFootSkill[i] = rand(90, 80) - it;
+        // backFootSkill[i] = rand(90, 80) - it;
+        // offSideSkill[i] = rand(90, 80) - it;
+        // onSideSkill[i] = rand(90, 80) - it;
+        // AgainstPace[i] = rand(90, 80) - it;
+        // AgainstSpin[i] = rand(90, 80) - it;
+        // strokePlay[i] = rand(90, 80) - it;
+        // it += 3;
+        // }
+        // it = 0;
+        // for (int i = 10; i > -1; i--) {
+        // if (bowlerCategory[i] == 1) {
+        // swing[i] = rand(90, 80) - it;
+        // seam[i] = rand(90, 80) - it;
+        // accuracy[i] = rand(90, 80) - it;
+        // variations[i] = rand(90, 80) - it;
+        // it += 3;
+        // } else {
+        // spin[i] = rand(90, 80) - it;
+        // drift[i] = rand(90, 80) - it;
+        // accuracy[i] = rand(90, 80) - it;
+        // variations[i] = rand(90, 80) - it;
+        // it += 3;
+        // }
+        // }
+        // it = 0;
+        // for (int i = 0; i < 11; i++) {
+        // if (i > 6) {
+        // bowlerCategory[i] = randobj.nextInt(1);
+        // } else {
+        // bowlerCategory[i] = randobj.nextInt(1);
+        // }
+        // }
     }
 
     void setOrderOfEvents() {
         // this is for setting order of events
         // whenever the bowl button will be pressed this method will get called
-        settingAttributesRandomly();
+        // settingAttributesRandomly();
         setSkills();
         // set line
         // set length
