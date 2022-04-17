@@ -20,6 +20,8 @@ public class editedUI_6 extends backend2 {
 
     ActionListener ALObject;
 
+    field_Aggression_LineLength fObj;
+
 
     private void frameSettings(int x, int y, int width, int height) {
         setBounds(x, y, width, height);
@@ -370,6 +372,7 @@ public class editedUI_6 extends backend2 {
                 }
                 aIAlgorithmBackend();
 
+                fObj.setter(line,length,fieldAggression);
                 int a2 = 2+3;
                 choiceIfElse();
                 backend2setters(line, length, fieldAggression, battingAggression, bowlerIndex);
@@ -466,9 +469,13 @@ public class editedUI_6 extends backend2 {
 
         AddPanelToUI(mainPanel);
 
+        fObj = new field_Aggression_LineLength();
+
         addingALtogether();
 
         addingActionListener();
+
+
 
     }
 
@@ -480,7 +487,7 @@ public class editedUI_6 extends backend2 {
         declaringlabelsTogether();
         declaringChoicesTogether();
 
-        frameSettings(400, 25, 700, 750);
+        frameSettings(670, 25, 700, 750);
 
         addingPanelsTogether();
         settingPanelLayoutTogether();
