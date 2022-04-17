@@ -471,6 +471,8 @@ public class editedUI_6 extends backend2 {
 
         fObj = new field_Aggression_LineLength();
 
+        bowlerIndex = 10+startIndexForBowler;
+
         addingALtogether();
 
         addingActionListener();
