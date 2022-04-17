@@ -17,6 +17,7 @@ public class editedUI_6 extends backend2 {
     JLabel battingAggressionLabel = new JLabel();
     JLabel fieldingAggressionLabel = new JLabel();
     JLabel scoreLabel = new JLabel();
+
     ActionListener ALObject;
 
 
@@ -48,12 +49,13 @@ public class editedUI_6 extends backend2 {
         bowlButton = new JButton(text);
         bowlButton.setBackground(Color.BLACK);
         bowlButton.setForeground(Color.WHITE);
+        bowlButton.setFont(new Font("Elephant", Font.BOLD, 18));
     }
 
     private void AddLabel(JLabel l, JPanel p, String label) {
         l = new JLabel(label);
         l.setForeground(Color.DARK_GRAY);
-        l.setFont(new Font("Tahoma", Font.BOLD, 14));
+        l.setFont(new Font("Elephant", Font.BOLD, 14));
         l.setHorizontalTextPosition(SwingConstants.CENTER);
         p.add(l);
     }
@@ -79,6 +81,10 @@ public class editedUI_6 extends backend2 {
 
     void declaringlabelsTogether() {
         scoreLabel = new JLabel("Bowl");
+        scoreLabel.setFont(new Font("Elephant", Font.BOLD, 18));
+        batsmanStatsLabel.setFont(new Font("Elephant", Font.BOLD, 16));
+        bowlerStatsLabel.setFont(new Font("Elephant", Font.BOLD, 16));
+
     }
 
     void declaringChoicesTogether() {
@@ -293,110 +299,29 @@ public class editedUI_6 extends backend2 {
 
     void choiceIfElse() {
 
-        // Batsman Aggression
-        if (batsmanAggresionChoice.getSelectedIndex() == 0) {
-            battingAggression = 1;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 1) {
-            battingAggression = 2;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 2) {
-            battingAggression = 3;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 3) {
-            battingAggression = 4;
-        } else if (batsmanAggresionChoice.getSelectedIndex() == 4) {
-            battingAggression = 5;
+
+        if(userBatting){
+            battingAggression = batsmanAggresionChoice.getSelectedIndex()+1;
+
+            fieldAggressionChoice.select(fieldAggression-1);
+            //chooseBowlerChoice.select(bowlerIndex-startIndexForBowler);
+            lineChoice.select(line-1);
+            lengthChoice.select(length-1);
+        }
+        else{
+            fieldAggression = fieldAggressionChoice.getSelectedIndex()+1;
+            bowlerIndex = chooseBowlerChoice.getSelectedIndex()+startIndexForBowler;
+            line = lineChoice.getSelectedIndex() + 1;
+            length = lengthChoice.getSelectedIndex()+1;
+
+            batsmanAggresionChoice.select(battingAggression-1);
         }
 
-        // Field Aggression
-        if (fieldAggressionChoice.getSelectedIndex() == 0) {
-            fieldAggression = 1;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 1) {
-            fieldAggression = 2;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 2) {
-            fieldAggression = 3;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 3) {
-            fieldAggression = 4;
-        } else if (fieldAggressionChoice.getSelectedIndex() == 4) {
-            fieldAggression = 5;
-        }
 
-        // Selection of Bowler
 
-        if (userBatting == true) {
 
-            if (chooseBowlerChoice.getSelectedIndex() == 0) {
-                bowlerIndex = 0 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 1) {
-                bowlerIndex = 1 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 2) {
-                bowlerIndex = 2 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 3) {
-                bowlerIndex = 3 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 4) {
-                bowlerIndex = 4 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 5) {
-                bowlerIndex = 5 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 6) {
-                bowlerIndex = 6 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 7) {
-                bowlerIndex = 7 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 8) {
-                bowlerIndex = 8 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 9) {
-                bowlerIndex = 9 + 11;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 10) {
-                bowlerIndex = 10 + 11;
-            }
-        } else {
-            if (chooseBowlerChoice.getSelectedIndex() == 0) {
-                bowlerIndex = 0;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 1) {
-                bowlerIndex = 1;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 2) {
-                bowlerIndex = 2;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 3) {
-                bowlerIndex = 3;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 4) {
-                bowlerIndex = 4;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 5) {
-                bowlerIndex = 5;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 6) {
-                bowlerIndex = 6;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 7) {
-                bowlerIndex = 7;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 8) {
-                bowlerIndex = 8;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 9) {
-                bowlerIndex = 9;
-            } else if (chooseBowlerChoice.getSelectedIndex() == 10) {
-                bowlerIndex = 10;
-            }
-        }
 
-        // Line Choice
-        if (lineChoice.getSelectedIndex() == 0) {
-            line = 1;
-        } else if (lineChoice.getSelectedIndex() == 1) {
-            line = 2;
-        } else if (lineChoice.getSelectedIndex() == 2) {
-            line = 3;
-        } else if (lineChoice.getSelectedIndex() == 3) {
-            line = 4;
-        } else if (lineChoice.getSelectedIndex() == 4) {
-            line = 5;
-        }
 
-        // Length Choice
-        if (lengthChoice.getSelectedIndex() == 0) {
-            length = 1;
-        } else if (lengthChoice.getSelectedIndex() == 1) {
-            length = 2;
-        } else if (lengthChoice.getSelectedIndex() == 2) {
-            length = 3;
-        } else if (lengthChoice.getSelectedIndex() == 3) {
-            length = 4;
-        } else if (lengthChoice.getSelectedIndex() == 4) {
-            length = 5;
-        }
 
     }
 
@@ -404,6 +329,7 @@ public class editedUI_6 extends backend2 {
         ALObject = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+
                 if (userBatting == false & var1 == 0) {
                     setVisible(false);
                     new editedUI_5(target);
@@ -421,7 +347,7 @@ public class editedUI_6 extends backend2 {
                             new endScreen("lost");
                         }
                     }
-                    reset();
+                    innings();
                     chooseBowlerChoice.removeAll();
                     choiceAddSecondInnings();
                 }
@@ -438,14 +364,16 @@ public class editedUI_6 extends backend2 {
                             new endScreen("lost");
                         }
                     }
-                    reset();
+                    innings();
                     chooseBowlerChoice.removeAll();
                     choiceAddSecondInnings();
                 }
+                aIAlgorithmBackend();
 
+                int a2 = 2+3;
                 choiceIfElse();
                 backend2setters(line, length, fieldAggression, battingAggression, bowlerIndex);
-//                removeBowlersWhoseOversAreComplete();
+                removeBowlersWhoseOversAreComplete();
                 if(over_balls==6){
                     setPointsAtStart();
                 }
@@ -471,6 +399,7 @@ public class editedUI_6 extends backend2 {
     void addingActionListener() {
         bowlButton.addActionListener(ALObject);
     }
+
 
     void choiceAddSecondInnings() {
 //        addChoiceItems(chooseBowlerChoice, playerName[0]);
@@ -503,6 +432,7 @@ public class editedUI_6 extends backend2 {
 
 
     editedUI_6() {
+
 
         declaringPanelsTogether();
         declaringlabelsTogether();

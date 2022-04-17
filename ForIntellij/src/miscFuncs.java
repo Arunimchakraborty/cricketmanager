@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class miscFuncs {
     int findMax(int a, int b){
@@ -219,6 +220,20 @@ public class miscFuncs {
         int n =2;
         int pos2 = findNthHighest(array,n);
         System.out.println((n+1)+"th highest Element is : "+array[pos2]+" At pos : "+pos2);
+
+        int a;
+        a = new Random().nextInt(5);
+        System.out.println(a);
+        a = new Random().nextInt(5);
+        System.out.println(a);
+        a = new Random().nextInt(5);
+        System.out.println(a);
+        a = new Random().nextInt(5);
+        System.out.println(a);
+        a = new Random().nextInt(5);
+        System.out.println(a);
+        a = new Random().nextInt(5);
+        System.out.println(a);
 
 
     }
