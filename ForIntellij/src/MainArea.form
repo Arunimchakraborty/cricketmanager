@@ -68,7 +68,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="638fa" class="javax.swing.JComboBox" binding="chooseBowlerCB">
+      <component id="638fa" class="javax.swing.JComboBox" binding="chooseBowlerUserBattingCB">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -88,7 +88,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="612d4" class="javax.swing.JComboBox" binding="chooseBowlerinnings2">
+      <component id="612d4" class="javax.swing.JComboBox" binding="chooseBowlerUserBowlingCB">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
