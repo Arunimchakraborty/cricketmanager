@@ -1,0 +1,55 @@
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: cric_manager
+-- ------------------------------------------------------
+-- Server version	8.0.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bowling_skills`
+--
+
+DROP TABLE IF EXISTS `bowling_skills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bowling_skills` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bowling_style` int DEFAULT NULL,
+  `spin/seam` int DEFAULT NULL,
+  `drift/swing` int DEFAULT NULL,
+  `accuracy` int DEFAULT NULL,
+  `variations` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bowling_skills`
+--
+
+LOCK TABLES `bowling_skills` WRITE;
+/*!40000 ALTER TABLE `bowling_skills` DISABLE KEYS */;
+INSERT INTO `bowling_skills` VALUES (1,0,40,40,40,40),(2,0,40,40,40,40),(3,1,40,40,40,40),(4,0,40,40,40,40),(5,0,40,40,40,40),(6,0,60,60,60,60),(7,0,60,60,60,60),(8,1,80,80,80,80),(9,0,80,80,80,80),(10,1,86,92,88,92),(11,1,93,90,92,95),(12,0,40,40,40,40),(13,0,40,40,40,40),(14,0,40,40,40,40),(15,0,40,40,40,40),(16,0,40,40,40,40),(17,0,60,60,60,60),(18,0,60,60,60,60),(19,1,80,80,80,80),(20,1,80,80,80,80),(21,1,80,80,80,80),(22,0,80,80,80,80);
+/*!40000 ALTER TABLE `bowling_skills` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-03-29 21:31:04
